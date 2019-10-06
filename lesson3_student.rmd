@@ -72,17 +72,25 @@ Response:
 
 ### Perceived Audience Size
 Notes:
+On average, only a quarter of the actual audience was estimated by each individual.
 
 ***
 ### Faceting
 Notes:
+Adding another variable to split plots into multiple plots
 
 ```{r Faceting}
+ggplot(aes(x = dob_day), data = pf) + 
+  geom_histogram(binwidth = 1) +
+  scale_x_continuous(breaks = 1:31) +
+  facet_wrap(~dob_month, ncol = 3)
+
 
 ```
 
 #### Let’s take another look at our plot. What stands out to you here?
 Response:
+January 1st is the most common birthday which indicates that people use the default value to protect their privacy or simply don't want to enter their actual birthdays.
 
 ***
 
