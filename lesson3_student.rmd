@@ -27,12 +27,25 @@ Notes:
 ```{r Histogram of Users\' Birthdays}
 install.packages('ggplot2')
 library(ggplot2)
+
+qplot(x = dob_day, data = pf) +
+  scale_x_continuous(breaks=1:31)
+
+install.packages('ggthemes', dependencies = TRUE)
+library(ggthemes)
+
+theme_set(theme_minimal(12))
+
+ggplot(aes(x = dob_day), data = pf) + 
+  geom_histogram(binwidth = 1) +
+  scale_x_continuous(breaks = 1:31)
 ```
 
 ***
 
 #### What are some things that you notice about this histogram?
 Response:
+First day of the month has a lot of birthdays which is surprising. The last day of the month, the 31st, is less common which makes sense since not all months have a 31st day.
 
 ***
 
