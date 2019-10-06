@@ -96,6 +96,7 @@ January 1st is the most common birthday which indicates that people use the defa
 
 ### Be Skeptical - Outliers and Anomalies
 Notes:
+It is important to question outliers and anomalies to understand how to deal with them. In some cases, top coding data, i.e. anonymizing data, may be necessary to protect individuals with extreme values.
 
 ***
 
@@ -103,33 +104,38 @@ Notes:
 Notes:
 #### Which case do you think applies to Moira’s outlier?
 Response:
-
+Bad data in an extreme case
 ***
 
 ### Friend Count
 Notes:
+Lower values are over-represented with outliers close to 5000.
 
 #### What code would you enter to create a histogram of friend counts?
 
 ```{r Friend Count}
+ggplot(aes(x = friend_count), data = pf) +
+  geom_histogram(binwidth = 20)
 
 ```
 
 #### How is this plot similar to Moira's first plot?
 Response:
-
+Moira's data also had high outliers with the majority of people having lower numbers of friends.
 ***
 
 ### Limiting the Axes
 Notes:
 
 ```{r Limiting the Axes}
-
+ggplot(aes(x = friend_count), data = pf) +
+  geom_histogram() +
+  scale_x_continuous(limits = c(0, 1000))
 ```
 
 ### Exploring with Bin Width
 Notes:
-
+Allows you to see trends in the dat more clearly than just the default bin width of 30.
 ***
 
 ### Adjusting the Bin Width
