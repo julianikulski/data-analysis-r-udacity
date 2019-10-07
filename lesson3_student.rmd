@@ -247,7 +247,7 @@ Notes:
 
 ### Lada's Money Bag Meme
 Notes:
-
+Using log transformations makes it easier to understand the fluctuations in the data.
 ***
 
 ### Transforming Data
@@ -259,6 +259,25 @@ Notes:
 Notes:
 
 ```{r Add a Scaling Layer}
+# untransformed data
+summary(pf$friend_count)
+# log10 transformed data
+summary(log10(pf$friend_count + 1))
+# squareroot transformed data
+summary(sqrt(pf$friend_count))
+
+# installing gridExtra library
+install.packages('gridExtra')
+library(gridExtra)
+
+# define plots
+p1 <- ggplot(aes(x = friend_count + 1), data = pf) +
+  geom_histogram()
+p2 <- p1 + scale_x_log10()
+p3 <- p1 + scale_x_sqrt()
+
+# arrange plots in grid
+grid.arrange(p1, p2, p3, ncol = 1)
 
 ```
 
